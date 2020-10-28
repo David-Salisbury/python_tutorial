@@ -25,12 +25,20 @@ with open(filename,"r") as datafile:
             # datum is not a list of the split up string
             data.append(datum) # adds another record to the data arrayist 
 
+    data2 = {'date':[], 'time':[], 'tempout':[]}
+
+    for line in datafile:
+        split_line = line.split()
+        data2['data'].append(split_line[0])
+        data2['time'].append(split_line[1])
+        data2['tempout'].append(float(split_line[2])) # integer only on floats
 
 # DEBUG
-print(data[8])
-print(data[8][4])
-print(data[8][4][0])
-print (data[8][::2]) # no start or end but always every other
+#print(data[8])
+#print(data[8][4])
+#print(data[8][4][0])
+#print (data[8][::2]) # no start or end but always every other
+#print (data2['tempout']
 #print(data[1:3])
 #print(data[-1]) # last row
 #for datum in data[:3]:  #[:4:2] - start at 0, do 4 by 2s
