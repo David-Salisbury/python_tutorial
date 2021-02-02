@@ -6,9 +6,10 @@ data = {}  #dictionary
 #you can index into lists.. and strings
 # column names and column indeces to read
 columns = {'date':0, 'time':1, 'tempout':2} #dictionary
+columns = {'date':0, 'time':1, 'tempout':2, 'windspeed':7} #dictionary
 
 # Data types for each column ( only if non-string )
-types = {'tempout': float} # convert to a float ( float is a function ptr )
+types = {'tempout': float, 'windspeed':float} # convert to a float ( float is a function ptr )
 
 #data = {'date':[], 'time':[], 'tempout':[]} #initialize to lists with names # hardcode deprecated
 #time = data['time']
@@ -29,6 +30,7 @@ with open(filename,"r") as datafile:  # closes the file too
     #data = datafile.read()  
     for i in range(3): 
         datafile.readline()
+
     # read and parse the rest of the file
     for line in datafile:
         split_line = line.split()  # blank value means split on whitespace, default.
@@ -39,7 +41,7 @@ with open(filename,"r") as datafile:  # closes the file too
         for column in columns:   # make our new data dictionary
             i = columns[column]  # i shorthand for index  i will be 0, 1 or 2
             t = types.get(column,str)
-            print(t)
+            #print(t)
             value = t(split_line[i])
             data[column].append(value) 
 
