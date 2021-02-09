@@ -6,7 +6,7 @@ data = {}  #dictionary
 #you can index into lists.. and strings
 # column names and column indeces to read
 columns = {'date':0, 'time':1, 'tempout':2} #dictionary
-columns = {'date':0, 'time':1, 'tempout':2, 'windspeed':7} #dictionary
+columns = {'date':0, 'time':1, 'tempout':2, 'windspeed':7} #dictionary - position in data list
 
 # Data types for each column ( only if non-string )
 types = {'tempout': float, 'windspeed':float} # convert to a float ( float is a function ptr )
@@ -41,13 +41,34 @@ with open(filename,"r") as datafile:  # closes the file too
         for column in columns:   # make our new data dictionary
             i = columns[column]  # i shorthand for index  i will be 0, 1 or 2
             t = types.get(column,str)
-            #print(t)
             value = t(split_line[i])
             data[column].append(value) 
 
 # negative indexes start at the end instead of the beginning
 
+# Compute the wind chill temperature
+
+def compute_windchill(temp, windspeed):
+    a = 35.74
+    b = 0.6215
+    c = 35.75
+    d = 0.4275
+
+    v16 = windspeed ** 0.16
+    windchill = a + ( b * temp) - ( c * v16) + ( d * temp * v16 )
+
+    return windchill
+
+
+
+
 #print (data['tempout'])
+
+windchill = []
+for temp, windspeed in zip(data['tempout'], data['windspeed']):
+    windchill.append(compute_windchill(temp,windspeed))
+
+print(windchill)
 
 
 
