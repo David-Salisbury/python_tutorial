@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # comment
 
+import math
+
 
 def compute_windchill(t,v):
    """
@@ -35,6 +37,26 @@ def compute_heatindex(t,hum):
    rh = 1
 
 
+def computer_dewpoint(t,h):
+    '''
+    Compute the dew point
+    Parameters:
+        t: temp in F float
+        h: humidity relative % float
+    '''
+
+    tempC = ( t -32 ) * 5 / 9
+    rh =  h / 100 # decimal
+
+    b = 18.678
+    c = 257.14  # celsius
+
+    gamma = math.log(rh) + (b * tempC) / ( c + tempC )
+    tdp = c * gamma / ( b - gamma )
+
+    tdp_F = 9 / 5 * tdp + 32
+
+    return tdp_F
 
 
 
