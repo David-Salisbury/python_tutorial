@@ -4,10 +4,11 @@
 
 def compute_windchill(t,v):
    """
-   """
-   Oarameters
+   Only valid for temperatures between -45F and +45F and windspeeds 3 to 60 mph
+   Parameters
    t: temperature
-   v: 
+   v:  speed
+   """
 
    a = 35
    b = 0.62
@@ -28,7 +29,7 @@ def compute_heatindex(t,hum):
    b = 2.04
    c = 10.14
    d = 0.22
-   e = o.006837
+   e = 0.006837
    f = 0.054
 
    rh = 1
