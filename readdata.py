@@ -1,11 +1,12 @@
+# types={} says that is the default if not entered
 
 def read_data(columns, types={}, filename="daa/wxobs20170821.txt"):
     """
     Read data from CU data file
     Parameters:
-       columns: A dictionary of column names to idices
+       columns: A dictionary of column names to indices
        types: A dictionary o column names types to which to convert each column of data
-       filename: a string
+       filename: a string path pointing to the CUboulder WEather Station data file
     """
     #initialize
     data = {} 
