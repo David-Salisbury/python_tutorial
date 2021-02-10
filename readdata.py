@@ -1,6 +1,6 @@
 # types={} says that is the default if not entered
 
-def read_data(columns, types={}, filename="daa/wxobs20170821.txt"):
+def read_data(columns, types={}, filename="data/wxobs20170821.txt"):
     """
     Read data from CU data file
     Parameters:
